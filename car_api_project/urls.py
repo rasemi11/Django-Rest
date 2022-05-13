@@ -23,9 +23,10 @@ from car_api_app.views import SignUpView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path("accounts/signup/", SignUpView.as_view(), name="signup"),
     path("accounts/", include("django.contrib.auth.urls")),
     path(r'swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('api/', include(router.urls)),
+
 ]

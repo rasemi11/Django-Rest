@@ -48,7 +48,7 @@ class CarBrand(SoftDeleteModel):
 
 class CarModel(SoftDeleteModel):
 
-    car_brand = models.ForeignKey(CarBrand, on_delete=models.CASCADE)
+    car_brand = models.ForeignKey(CarBrand, related_name='brand', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(default=datetime.now)
     updated_at = models.DateTimeField(blank=True, null=True)
@@ -59,8 +59,8 @@ class CarModel(SoftDeleteModel):
 
 class UserCar(SoftDeleteModel):
 
-    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
-    car_model = models.ForeignKey(CarModel, on_delete=models.CASCADE)
+    user = models.ForeignKey(AppUser, related_name='user', on_delete=models.CASCADE)
+    car_model = models.ForeignKey(CarModel, related_name='car_model', on_delete=models.CASCADE)
     first_reg = models.DateTimeField()
     odometer = models.CharField(max_length=100)
     created_at = models.DateTimeField(default=datetime.now)

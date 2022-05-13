@@ -3,10 +3,13 @@ from car_api_app.models import AppUser, CarModel, CarBrand, UserCar
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django_filters import rest_framework as djfilt
+from django.urls import path, include
+
 
 
 # Serializers
 class CarBrandSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = CarBrand
         fields = '__all__'
@@ -49,8 +52,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserCarSerializer(serializers.HyperlinkedModelSerializer):
-    car_model = serializers.HyperlinkedRelatedField(view_name='car_model', queryset=CarModel.objects.all())
-    user = serializers.HyperlinkedRelatedField(view_name='users', queryset=AppUser.objects.all())
+    car_model = serializers.HyperlinkedRelatedField(view_name='carmodel', queryset=CarModel.objects.all())
+    user = serializers.HyperlinkedRelatedField(view_name='user', queryset=AppUser.objects.all())
 
     class Meta:
         model = UserCar
@@ -79,14 +82,6 @@ class CarBrandFilter(djfilt.FilterSet):
         fields = ['name_search']
 
 
-class UserCarFilter(djfilt.FilterSet):
-    name_search = djfilt.CharFilter(field_name="name", lookup_expr='contains')
-
-    class Meta:
-        model = UserCar
-        fields = ['name_search']
-
-
 # ViewSets
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = AppUser.objects.all()
@@ -96,8 +91,6 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 class UserCarViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = UserCar.objects.all()
     serializer_class = UserCarSerializer
-    filter_backends = (djfilt.DjangoFilterBackend,)
-    filterset_class = UserCarFilter
 
 
 class CarModelViewSet(viewsets.ModelViewSet):
