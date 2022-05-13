@@ -52,7 +52,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserCarSerializer(serializers.HyperlinkedModelSerializer):
-    car_model = serializers.HyperlinkedRelatedField(view_name='carmodel', queryset=CarModel.objects.all())
+    car_model = serializers.HyperlinkedRelatedField(view_name='car_model', queryset=CarModel.objects.all())
     user = serializers.HyperlinkedRelatedField(view_name='user', queryset=AppUser.objects.all())
 
     class Meta:
