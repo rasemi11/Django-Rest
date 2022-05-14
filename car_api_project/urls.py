@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from car_api_app.urls import router, schema_view
+from car_api_app.urls import schema_view, router
 from django.views.generic.base import TemplateView
 from car_api_app.views import SignUpView
 
@@ -28,5 +28,5 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path(r'swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api/', include(router.urls)),
-
+    # path('', include('car_api_app.urls')),
 ]

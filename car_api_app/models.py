@@ -36,6 +36,9 @@ class AppUser(AbstractUser):
     def get_queryset():
         return AppUser.objects.all().filter(deleted_at__isnull=True)
 
+    def __repr__(self):
+        return self
+
 
 class CarBrand(SoftDeleteModel):
 
@@ -44,6 +47,9 @@ class CarBrand(SoftDeleteModel):
 
     def __str__(self):
         return self.name
+
+    def __repr__(self):
+        return self
 
 
 class CarModel(SoftDeleteModel):
@@ -56,6 +62,9 @@ class CarModel(SoftDeleteModel):
     def __str__(self):
         return f'{self.car_brand} {self.name}'
 
+    def __repr__(self):
+        return self
+
 
 class UserCar(SoftDeleteModel):
 
@@ -66,4 +75,7 @@ class UserCar(SoftDeleteModel):
     created_at = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
+        return f'{self.user.name} {self.car_model.name}'
+
+    def __repr__(self):
         return f'{self.user.name} {self.car_model.name}'
