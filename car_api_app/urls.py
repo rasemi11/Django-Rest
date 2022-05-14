@@ -52,13 +52,13 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserCarSerializer(serializers.HyperlinkedModelSerializer):
-    car_model = serializers.HyperlinkedRelatedField(view_name='car_model', queryset=CarModel.objects.all())
-    user = serializers.HyperlinkedRelatedField(view_name='user', queryset=AppUser.objects.all())
+    car_model = CarModelSerializer()
+    user = UserSerializer()
 
     class Meta:
         model = UserCar
         fields = '__all__'
-        lookup_field = 'user'
+        # lookup_field = 'user'
 
     def get_field_names(self, declared_fields, info):
         expanded_fields = super(UserCarSerializer, self).get_field_names(declared_fields, info)
@@ -108,6 +108,7 @@ class CarBrandViewSet(viewsets.ModelViewSet):
 
 
 router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
 router.register(r'user_car', UserCarViewSet)
 router.register(r'car_model', CarModelViewSet)
 router.register(r'car_brand', CarBrandViewSet)

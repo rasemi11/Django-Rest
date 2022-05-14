@@ -33,14 +33,18 @@ class AppUser(AbstractUser):
     mobile_number = models.CharField(max_length=10, unique=True)
     birth_date = models.DateField(null=True, blank=True)
 
-    def get_queryset(self):
-        return super().get_queryset().filter(deleted_at__isnull=True)
+    @staticmethod
+    def get_queryset():
+        return AppUser.objects.all().filter(deleted_at__isnull=True)
 
 
 class CarBrand(SoftDeleteModel):
 
     name = models.CharField(max_length=100, unique=True)
     created_at = models.DateTimeField(default=datetime.now)
+
+    # def create(self):
+    #     return self
 
     def __str__(self):
         return self.name
@@ -52,6 +56,9 @@ class CarModel(SoftDeleteModel):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(default=datetime.now)
     updated_at = models.DateTimeField(blank=True, null=True)
+
+    # def create(self):
+    #     return self
 
     def __str__(self):
         return f'{self.car_brand} {self.name}'
@@ -65,5 +72,8 @@ class UserCar(SoftDeleteModel):
     odometer = models.CharField(max_length=100)
     created_at = models.DateTimeField(default=datetime.now)
 
+    # def create(self):
+    #     return self
+
     def __str__(self):
-        return f'{self.user} {self.car_model}'
+        return f'{self.user.name} {self.car_model.name}'
