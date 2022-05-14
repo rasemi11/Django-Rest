@@ -3,8 +3,6 @@ from car_api_app.models import AppUser, CarModel, CarBrand, UserCar
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django_filters import rest_framework as djfilt
-from django.urls import path, include
-
 
 
 # Serializers

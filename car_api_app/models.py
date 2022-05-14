@@ -29,7 +29,6 @@ class SoftDeleteModel(models.Model):
 
 class AppUser(AbstractUser):
 
-    name = models.CharField(max_length=100, unique=True)
     mobile_number = models.CharField(max_length=10, unique=True)
     birth_date = models.DateField(null=True, blank=True)
 
@@ -43,9 +42,6 @@ class CarBrand(SoftDeleteModel):
     name = models.CharField(max_length=100, unique=True)
     created_at = models.DateTimeField(default=datetime.now)
 
-    # def create(self):
-    #     return self
-
     def __str__(self):
         return self.name
 
@@ -56,9 +52,6 @@ class CarModel(SoftDeleteModel):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(default=datetime.now)
     updated_at = models.DateTimeField(blank=True, null=True)
-
-    # def create(self):
-    #     return self
 
     def __str__(self):
         return f'{self.car_brand} {self.name}'
@@ -71,9 +64,6 @@ class UserCar(SoftDeleteModel):
     first_reg = models.DateTimeField()
     odometer = models.CharField(max_length=100)
     created_at = models.DateTimeField(default=datetime.now)
-
-    # def create(self):
-    #     return self
 
     def __str__(self):
         return f'{self.user.name} {self.car_model.name}'

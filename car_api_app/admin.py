@@ -5,5 +5,3 @@ admin.site.register(CarModel)
 admin.site.register(CarBrand)
 admin.site.register(UserCar)
 admin.site.register(AppUser)
-
-
