@@ -29,7 +29,8 @@ class SoftDeleteModel(models.Model):
 
 class AppUser(AbstractUser):
 
-    mobile_number = models.CharField(max_length=10, unique=True)
+    username = models.CharField(max_length=100, unique=True)
+    mobile_number = models.CharField(max_length=10, unique=True, null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
 
     @staticmethod
@@ -54,7 +55,7 @@ class CarBrand(SoftDeleteModel):
 
 class CarModel(SoftDeleteModel):
 
-    car_brand = models.ForeignKey(CarBrand, related_name='brand', on_delete=models.CASCADE)
+    car_brand = models.ForeignKey(CarBrand, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(default=datetime.now)
     updated_at = models.DateTimeField(blank=True, null=True)
