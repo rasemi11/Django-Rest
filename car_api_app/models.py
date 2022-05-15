@@ -55,7 +55,7 @@ class CarBrand(SoftDeleteModel):
 
 class CarModel(SoftDeleteModel):
 
-    car_brand = models.ForeignKey(CarBrand, on_delete=models.CASCADE)
+    car_brand = models.ForeignKey(CarBrand, related_name='brand', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(default=datetime.now)
     updated_at = models.DateTimeField(blank=True, null=True)

@@ -77,6 +77,6 @@ class UserCarSerializer(serializers.HyperlinkedModelSerializer):
         return instance
 
     def to_representation(self, instance):
-        self.fields['quiz_question'] = CarModelSerializer()
-        self.fields['learner'] = UserSerializer()
+        self.fields['car_model'] = CarModelSerializer()
+        self.fields['user'] = UserSerializer()
         return super(UserCarSerializer, self).to_representation(instance)
