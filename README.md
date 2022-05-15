@@ -7,20 +7,20 @@ The projects uses Django, Django Rest Framework, Django Filters and Yet another 
 
 1. Installation
 
-Use requirements.txt
+- Use requirements.txt
 
-Replace templates in venv\Lib\site-packages
+- Replace templates in venv\Lib\site-packages
 
 
 2. Usage
 
-manage.py runserver
+- manage.py runserver
 
-We have admin interface
+- We have admin interface
 http://127.0.0.1:8000/admin/
 U:1 P:1
 
-Adn regular user interface
+- And regular user interface
 http://127.0.0.1:8000/
 
 
