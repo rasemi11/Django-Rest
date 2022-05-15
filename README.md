@@ -10,6 +10,13 @@ The projects uses Django, Django Rest Framework, Django Filters and Yet another 
 - Use requirements.txt
 
 - Replace templates in venv\Lib\site-packages
+- app links:
+* /admin
+* /accounts/signup
+* accounts/login
+* accounts/logout
+* /api
+* /swagger
 
 
 2. Usage
