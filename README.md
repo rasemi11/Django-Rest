@@ -32,7 +32,7 @@ http://127.0.0.1:8000/
 
 - You can run reload_test_data.py to start with fresh lists for brands and models
 
-3 To do
+3. To do
 
 - fix post requests for CarModel and UserCar
 - improve urls
