@@ -26,6 +26,5 @@ http://127.0.0.1:8000/
 
 3 To do
 
-- fix registration
 - fix post requests for CarModel and UserCar
 - improve urls
