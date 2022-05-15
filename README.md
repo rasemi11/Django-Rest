@@ -23,6 +23,7 @@ U:1 P:1
 - And regular user interface
 http://127.0.0.1:8000/
 
+- You can run reload_test_data.py to start with fresh lists for brands and models
 
 3 To do
 
