@@ -5,8 +5,10 @@ c = conn.cursor()
 
 c.execute("DELETE FROM car_api_app_carbrand")
 c.execute("DELETE FROM car_api_app_carmodel")
+c.execute("DELETE FROM car_api_app_usercar")
 c.execute("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='car_api_app_carbrand';")
 c.execute("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='car_api_app_carmodel';")
+c.execute("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='car_api_app_usercar';")
 
 
 c.execute("INSERT INTO car_api_app_carbrand "
@@ -27,6 +29,13 @@ c.execute("INSERT INTO car_api_app_carmodel "
           "('133', 'NOW', NULL, 3),"
           "('Clio', 'NOW', NULL, 4),"
           "('Megane', 'NOW', NULL, 4)")
+conn.commit()
+
+c.execute("INSERT INTO car_api_app_usercar"
+          "(created_at, deleted_at, car_model_id, user_id, first_reg, odometer) "
+          "VALUES('NOW', NULL, 1, 1, 'NOW', 'test odo'),"
+          "('NOW', NULL, 2, 1, 'NOW', 'test odo'),"
+          "('NOW', NULL, 3, 1, 'NOW', 'test odo')")
 conn.commit()
 
 conn.close()
